@@ -133,7 +133,12 @@ private void displayTransactionHistory() {
         // 打开商店页面逻辑
     }
 
-    private void openRegulationPage() {
+    private void openRegulationPage() { // 创建监管页面的逻辑
+    // 创建监控界面对象实例
+    monitor monitorInterface = new monitor();
+    
+    // 显示监控界面
+    monitorInterface.show();
         // 打开监管页面逻辑
     }
 }
