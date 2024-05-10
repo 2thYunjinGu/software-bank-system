@@ -28,24 +28,24 @@ public class RegisterView extends JFrame {
         setLocationRelativeTo(null); // 窗口居中
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        add(new JLabel("用户名:"));
+        add(new JLabel("Username: "));
         usernameField = new JTextField();
         add(usernameField);
 
-        add(new JLabel("密码:"));
+        add(new JLabel("Password: "));
         passwordField = new JPasswordField();
         add(passwordField);
 
-        add(new JLabel("用户类型:"));
-        String[] userTypes = {"孩子", "父母"};
+        add(new JLabel("Type of user: "));
+        String[] userTypes = {"Child", "Parent"};
         userTypeComboBox = new JComboBox<>(userTypes);
         add(userTypeComboBox);
 
-        add(new JLabel("家庭成员姓名:"));
+        add(new JLabel("The name(s) of family member: "));
         familyMemberNameField = new JTextField();
         add(familyMemberNameField);
 
-        addFamilyMemberButton = new JButton("添加成员");
+        addFamilyMemberButton = new JButton("Add a member: ");
         add(addFamilyMemberButton);
 
         familyMembersListModel = new DefaultListModel<>();
@@ -53,15 +53,15 @@ public class RegisterView extends JFrame {
         JScrollPane familyMembersScrollPane = new JScrollPane(familyMembersList);
         add(familyMembersScrollPane);
 
-        add(new JLabel("货币类型:"));
-        String[] currencies = {"人民币", "欧元", "日元", "美元", "英镑"};
+        add(new JLabel("Type of currency"));
+        String[] currencies = {"RMB", "EUR", "JPY", "USD", "GBP"};
         currencyComboBox = new JComboBox<>(currencies);
         add(currencyComboBox);
 
-        registerButton = new JButton("注册");
+        registerButton = new JButton("Register");
         add(registerButton);
 
-        backButton = new JButton("返回登录");
+        backButton = new JButton("back to login page");
         add(backButton);
     }
 
