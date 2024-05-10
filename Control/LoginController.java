@@ -23,22 +23,22 @@ public class LoginController {
         loginView.getLoginButton().addActionListener(e -> performLogin());
         loginView.getRegisterButton().addActionListener(e -> performRegistration());
         loginView.setVisible(true);
-        registerView.setVisible(false); // 确保注册视图初始不可见
+        registerView.setVisible(false);
     }
 
     private void performLogin() {
         String username = loginView.getUsernameField().getText();
         String password = new String(loginView.getPasswordField().getPassword());
-        User user = User.validate(username, password); // 假设validate现在返回User对象或null
+        User user = User.validate(username, password);
 
         if (user != null) {
-            JOptionPane.showMessageDialog(loginView, "登录成功", "成功", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(loginView, "Log in successfully!", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
             loginView.setVisible(false);
             MainView mainView = new MainView(user);
             mainView.setVisible(true);
             MainController mainController = new MainController(mainView,user);
         } else {
-            JOptionPane.showMessageDialog(loginView, "登录失败：用户名或密码错误", "错误", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(loginView, "Failed to log in: Incorrect username or password", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 
