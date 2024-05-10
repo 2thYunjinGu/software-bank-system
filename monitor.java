@@ -27,7 +27,7 @@ public class MonitorView {
 
         frame.add(panel); // 将面板添加到窗口中
 
-        // 为按钮添加监听器，定义按钮的具体功能
+    
         setDepositLimitButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
