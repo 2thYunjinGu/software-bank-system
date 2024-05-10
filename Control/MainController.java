@@ -115,7 +115,7 @@ private void displayTransactionHistory() {
     private void openShopPage() {
         // 打开商店页面逻辑
     }
-import javax.swing.*;
+
 
 public class MonitorView {
     private JFrame frame; // JFrame对象，用于创建窗口
