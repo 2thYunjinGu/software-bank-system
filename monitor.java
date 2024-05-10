@@ -31,7 +31,7 @@ public class MonitorView {
         setDepositLimitButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                // 添加设置存款限制按钮的具体功能
+               
                 JOptionPane.showMessageDialog(frame, "Set Deposit Limit button clicked!");
             }
         });
@@ -39,7 +39,7 @@ public class MonitorView {
         setWithdrawLimitButton.addActionListener(new ActionListener() {
         
             public void actionPerformed(ActionEvent e) {
-                // 添加设置取款限制按钮的具体功能
+               
                 JOptionPane.showMessageDialog(frame, "Set Withdraw Limit button clicked!");
             }
         });
@@ -47,7 +47,7 @@ public class MonitorView {
         reviewTransactionsButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                // 添加审查交易记录按钮的具体功能
+               
                 JOptionPane.showMessageDialog(frame, "Review Transactions button clicked!");
             }
         });
@@ -55,7 +55,7 @@ public class MonitorView {
         lockAccountButton.addActionListener(new ActionListener() {
           
             public void actionPerformed(ActionEvent e) {
-                // 添加锁定账户按钮的具体功能
+              
                 JOptionPane.showMessageDialog(frame, "Lock Account button clicked!");
             }
         });
