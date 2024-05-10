@@ -5,7 +5,7 @@ public class Transaction {
     private double amount;
     private LocalDateTime timestamp;
     private String duration;
-    private LocalDateTime lockUntil;  // 添加锁定到期时间
+    private LocalDateTime lockUntil;  
 
     public Transaction(String type, double amount, String duration, LocalDateTime lockUntil) {
         this.type = type;
