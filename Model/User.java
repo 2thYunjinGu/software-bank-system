@@ -136,14 +136,14 @@ public class User {
 
     // 存款
     public void deposit(double amount, String type, String duration) {
-        if ("死期".equals(type) && !duration.isEmpty()) {
+        if ("time deposit".equals(type) && !duration.isEmpty()) {
             try {
                 int lockDays = Integer.parseInt(duration);
                 // 正确处理锁定时间
                 LocalDateTime lockUntil = LocalDateTime.now().plusSeconds(lockDays);  // 如果一秒代表一天，则应使用plusDays
                 this.transactions.add(new Transaction("Deposit", amount, type, lockUntil));
             } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("锁定时间必须为数字");
+                throw new IllegalArgumentException("The period of time deposit must be a number!");
             }
         } else {
             // 对于活期存款，没有锁定时间
@@ -157,13 +157,13 @@ public class User {
 
     // 取款
     public void withdraw(double amount, String type) throws Exception {
-        // 检查是否有足够的余额和是否满足死期存款的锁定期条件
+        // 检查是否有足够的余额和是否满足time deposit存款的锁定期条件
         if (this.balance >= amount) {
-            // 检查所有存款交易以确保没有锁定期未到的死期存款
+            // 检查所有存款交易以确保没有锁定期未到的time deposit存款
             for (Transaction transaction : this.transactions) {
-                if (transaction.getType().equals("Deposit") && "死期".equals(type)) {
+                if (transaction.getType().equals("Deposit") && "Time deposit".equals(type)) {
                     if (transaction.getLockUntil() != null && LocalDateTime.now().isBefore(transaction.getLockUntil())) {
-                        throw new Exception("死期存款的锁定期尚未结束，不能取款");
+                        throw new Exception("You can't withdraw money during the time deposit period"); //time deposit存款的锁定期尚未结束，不能取款
                     }
                 }
             }
