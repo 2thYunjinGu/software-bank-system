@@ -16,7 +16,6 @@ public class MainController {
     }
 
     private void initView() {
-        // 绑定事件处理器
         mainView.getDepositButton().addActionListener(e -> handleDeposit());
         mainView.getWithdrawButton().addActionListener(e -> handleWithdraw());
         mainView.getTransactionHistoryButton().addActionListener(e -> displayTransactionHistory());
@@ -24,25 +23,24 @@ public class MainController {
         mainView.getStudyButton().addActionListener(e -> openStudyPage());
         mainView.getShopButton().addActionListener(e -> openShopPage());
         mainView.getRegulationButton().addActionListener(e -> openRegulationPage());
-        mainView.setVisible(true); // 显示主页面
-    }
+        mainView.setVisible(true); 
 
     private void handleDeposit() {
-        String amountString = JOptionPane.showInputDialog(mainView, "请输入存款金额:");
+        String amountString = JOptionPane.showInputDialog(mainView, "Please enter the amount of deposit");
         if (amountString == null || amountString.isEmpty()) {
-            JOptionPane.showMessageDialog(mainView, "存款取消或输入无效！", "错误", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(mainView, "Cancelled deposit or invalid input!", "ERROR", JOptionPane.ERROR_MESSAGE); 
             return;
         }
 
-        String[] options = {"活期", "死期"};
-        int depositType = JOptionPane.showOptionDialog(mainView, "请选择存款类型:", "存款类型",
+        String[] options = {"current deposit", "time deposit"};
+        int depositType = JOptionPane.showOptionDialog(mainView, "Please choose the type of deposit: ", "Type of deposit",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
         String duration = "";
-        if (depositType == 1) { // 死期存款
-            duration = JOptionPane.showInputDialog(mainView, "请输入存款的锁定天数（1秒=1天）:");
+        if (depositType == 1) { 
+            duration = JOptionPane.showInputDialog(mainView, "Please enter the duration of time period (1second == 1day)"); 
             if (duration == null || duration.isEmpty()) {
-                JOptionPane.showMessageDialog(mainView, "未输入锁定时间，存款取消！", "错误", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(mainView, "You don't enter the duration. The deposit is cancelled!", "ERROR", JOptionPane.ERROR_MESSAGE); 
                 return;
             }
         }
@@ -50,61 +48,46 @@ public class MainController {
         try {
             double amount = Double.parseDouble(amountString);
             if (depositType == 0) {
-                user.deposit(amount, "活期", "");
+                user.deposit(amount, "current deposit", "");
             } else {
-                user.deposit(amount, "死期", duration);
+                user.deposit(amount, "time deposit", duration);
             }
-            JOptionPane.showMessageDialog(mainView, "存款成功！");
+            JOptionPane.showMessageDialog(mainView, "Deposit successfully"); 
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(mainView, "请输入有效的金额！", "错误", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(mainView, "Please enter a valid amount!", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
     private void handleWithdraw() {
-        String amountString = JOptionPane.showInputDialog(mainView, "请输入取款金额:");
+        String amountString = JOptionPane.showInputDialog(mainView, "Please enter the withdraw amount: "); 
         if (amountString == null || amountString.isEmpty()) {
-            JOptionPane.showMessageDialog(mainView, "取款取消或输入无效！", "错误", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(mainView, "Cancelled withdrawaal or invalid input!", "ERROR", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // 提供用户选择存款类型
-        String[] options = {"活期", "死期"};
-        int typeChoice = JOptionPane.showOptionDialog(mainView, "请选择取款类型:", "取款类型",
+        String[] options = {"current deposit", "time deposit"};
+        int typeChoice = JOptionPane.showOptionDialog(mainView, "Please choose the type of withdrawal: ", "Type of withdrawal",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-        if (typeChoice == -1) {  // 用户未做选择
-            JOptionPane.showMessageDialog(mainView, "未选择取款类型，取款取消！", "错误", JOptionPane.ERROR_MESSAGE);
+        if (typeChoice == -1) {  
+            JOptionPane.showMessageDialog(mainView, "You don't enter the withdrawal tyoe, the withdrawal is cancelled!", "ERROR", JOptionPane.ERROR_MESSAGE);//未选择取款类型，取款取消！
             return;
         }
 
-        String type = options[typeChoice];  // 获取选择的存款类型
+        String type = options[typeChoice]; 
 
         try {
             double amount = Double.parseDouble(amountString);
-            user.withdraw(amount, type);  // 现在传递了两个参数
-            JOptionPane.showMessageDialog(mainView, "取款成功！");
+            user.withdraw(amount, type);  
+            JOptionPane.showMessageDialog(mainView, "Withdraw successfully");
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(mainView, "请输入有效的金额！", "错误", JOptionPane.ERROR_MESSAGE);
-        } catch (Exception e) {  // 更广泛的异常捕捉，包括自定义逻辑可能抛出的异常
-            JOptionPane.showMessageDialog(mainView, e.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(mainView, "Please enter a valid amount!", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {  
+            JOptionPane.showMessageDialog(mainView, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 
 
-//private void displayTransactionHistory() {
-//    StringBuilder history = new StringBuilder("<html>交易记录：<br>");
-//    for (Transaction transaction : user.getTransactions()) {
-//        history.append(transaction.getType())
-//                .append(" - ")
-//                .append(transaction.getAmount())
-//                .append(" (")
-//                .append(transaction.getTimestamp())  // 正确调用 getter 方法
-//                .append(")<br>")
-//                .append(user.getBalance());
-//    }
-//    history.append("</html>");
-//    JOptionPane.showMessageDialog(mainView, history.toString());
-//}
 private void displayTransactionHistory() {
-    StringBuilder history = new StringBuilder("<html>交易记录：<br>");
+    StringBuilder history = new StringBuilder("<html>Trandaction history: <br>");
     for (Transaction transaction : user.getTransactions()) {
         history.append(transaction.getType())
                 .append(" - ")
@@ -113,32 +96,27 @@ private void displayTransactionHistory() {
                 .append(transaction.getTimestamp())
                 .append(") - 余额: ")
                 .append( user.getBalance())
-                .append(" 元<br>");  // 每条记录后都添加换行
+                .append(" 元<br>");  
     }
     history.append("</html>");
-    JOptionPane.showMessageDialog(mainView, history.toString(), "交易历史", JOptionPane.INFORMATION_MESSAGE);
+    JOptionPane.showMessageDialog(mainView, history.toString(), "Trandaction history: ", JOptionPane.INFORMATION_MESSAGE);
 }
 
 
 
     private void openTaskPage() {
-        // 打开任务页面逻辑
+        
     }
 
     private void openStudyPage() {
-        // 打开学习页面逻辑
+    
     }
 
     private void openShopPage() {
         // 打开商店页面逻辑
     }
 
-    private void openRegulationPage() { // 创建监管页面的逻辑
-    // 创建监控界面对象实例
-    monitor monitorInterface = new monitor();
-    
-    // 显示监控界面
-    monitorInterface.show();
+    private void openRegulationPage() {
         // 打开监管页面逻辑
     }
 }
