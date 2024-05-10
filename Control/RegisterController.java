@@ -41,10 +41,10 @@ public class RegisterController {
 
 
         if (success) {
-            JOptionPane.showMessageDialog(registerView, "注册成功！", "成功", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(registerView, "Register successfully!", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
             goBackToLogin();
         } else {
-            JOptionPane.showMessageDialog(registerView, "注册失败，请检查输入或稍后重试。", "错误", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(registerView, "Fail to register, please check your input or enter again later.", "ERROR", JOptionPane.ERROR_MESSAGE); //注册失败，请检查输入或稍后重试。
         }
     }
 
@@ -54,7 +54,7 @@ public class RegisterController {
             registerView.getFamilyMembersListModel().addElement(memberName);
             registerView.getFamilyMemberNameField().setText("");
         } else {
-            JOptionPane.showMessageDialog(registerView, "成员姓名不能为空！", "错误", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(registerView, "The member name can't be empty!", "ERROR", JOptionPane.WARNING_MESSAGE);
         }
     }
 
