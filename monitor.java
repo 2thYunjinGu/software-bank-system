@@ -26,24 +26,43 @@ public class MonitorView {
         panel.add(lockAccountButton);
 
         frame.add(panel); // 将面板添加到窗口中
+        setDepositLimitButton.addActionListener(new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+        // 弹出输入框，让用户输入新的存款限制额度
+        String depositLimitString = JOptionPane.showInputDialog(frame, "输入新的存款限额:");
+        if (depositLimitString != null && !depositLimitString.isEmpty()) {
+            try {
+                double newDepositLimit = Double.parseDouble(depositLimitString);
+                // 设置新的存款限制额度到 User 类中
+                user.setDepositLimit(newDepositLimit);
+                JOptionPane.showMessageDialog(frame, "存款限额设置成功!");
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(frame, "无效输入! 请输入一个有效的数字。", "错误", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+});
+
+setWithdrawLimitButton.addActionListener(new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+        // 弹出输入框，让用户输入新的取款限制额度
+        String withdrawLimitString = JOptionPane.showInputDialog(frame, "输入新的取款限额:");
+        if (withdrawLimitString != null && !withdrawLimitString.isEmpty()) {
+            try {
+                double newWithdrawLimit = Double.parseDouble(withdrawLimitString);
+                // 设置新的取款限制额度到 User 类中
+                user.setWithdrawLimit(newWithdrawLimit);
+                JOptionPane.showMessageDialog(frame, "取款限额设置成功!");
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(frame, "无效输入! 请输入一个有效的数字。", "错误", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+});
+
 
     
-        setDepositLimitButton.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-               
-                JOptionPane.showMessageDialog(frame, "Set Deposit Limit button clicked!");
-            }
-        });
-
-        setWithdrawLimitButton.addActionListener(new ActionListener() {
-        
-            public void actionPerformed(ActionEvent e) {
-               
-                JOptionPane.showMessageDialog(frame, "Set Withdraw Limit button clicked!");
-            }
-        });
-
+     
         reviewTransactionsButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
