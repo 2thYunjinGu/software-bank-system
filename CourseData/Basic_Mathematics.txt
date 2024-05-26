@@ -1,0 +1,21 @@
+Course Title: Basic Mathematics
+
+Module 1: Introduction to Numbers
+- Understand and use the concepts of numbers.
+- Differentiate between various types of numbers like natural numbers, whole numbers, integers, rational numbers, and irrational numbers.
+
+Module 2: Basic Operations
+- Learn the four basic mathematical operations: addition, subtraction, multiplication, and division.
+- Practice these operations with positive and negative numbers.
+
+Module 3: Fractions and Decimals
+- Understand the concept of fractions and decimals.
+- Convert fractions to decimals and vice versa.
+- Solve problems involving fractions and decimals.
+
+Module 4: Introduction to Algebra
+- Understand the use of variables in mathematics.
+- Learn simple algebraic expressions and equations.
+- Solve simple equations.
+
+This course aims to provide a solid foundation in basic mathematical concepts and operations, preparing students for more advanced topics in mathematics.

@@ -1,0 +1,9 @@
+Welcome to the "Understanding Currencies and Forex" module!
+
+This module will explore:
+- The basics of currency exchange and the forex market.
+- Factors that influence currency values.
+- How to read and understand forex quotes.
+- An introduction to forex trading strategies.
+
+After completing this module, you will have a foundational understanding of the global currency markets and how they operate.
